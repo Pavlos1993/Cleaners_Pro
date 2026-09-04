@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.api
+    container_name: opsboard-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 8787
+    volumes:
+      - opsboard_data:/app/data
+    expose:
+      - "8787"
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.web
+    container_name: opsboard-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "5173:80"
+
+volumes:
+  opsboard_data:

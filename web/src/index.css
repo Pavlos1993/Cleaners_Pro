@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-manrope: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #f8f9ff;
+  --color-on-surface: #0b1c30;
+  --color-on-surface-variant: #45464d;
+  --color-secondary: #0058be;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #2170e4;
+  --color-on-tertiary-container: #009668;
+  --color-tertiary-fixed-dim: #4edea3;
+  --color-surface: #f8f9ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+  --color-outline-variant: #c6c6cd;
+  --color-error: #ba1a1a;
+  --color-primary-container: #131b2e;
+  --color-on-primary-container: #7c839b;
+  --color-tertiary-container: #002113;
+  --color-tertiary-fixed: #6ffbbe;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply m-0 min-h-dvh bg-background text-on-surface text-sm;
+    font-family:
+      'Inter',
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+  }
+  #root {
+    @apply min-h-dvh;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.task-card-shadow {
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.08),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.kanban-column {
+  width: 280px;
+  min-width: 280px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-break-after-page {
+    break-after: page;
+    page-break-after: always;
+  }
+  .print-break-after-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  .print-break-before-page {
+    break-before: page;
+    page-break-before: always;
+  }
+}

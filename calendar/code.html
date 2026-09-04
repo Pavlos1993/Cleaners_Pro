@@ -1,0 +1,393 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#002113",
+            "surface-bright": "#f8f9ff",
+            "on-error": "#ffffff",
+            "secondary": "#0058be",
+            "secondary-fixed-dim": "#adc6ff",
+            "surface-variant": "#d3e4fe",
+            "surface-dim": "#cbdbf5",
+            "surface-container": "#e5eeff",
+            "primary-container": "#131b2e",
+            "background": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eaf1ff",
+            "inverse-surface": "#213145",
+            "on-tertiary-container": "#009668",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-secondary-fixed": "#001a42",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#004395",
+            "outline": "#76777d",
+            "on-primary-fixed": "#131b2e",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#fefcff",
+            "secondary-container": "#2170e4",
+            "on-surface": "#0b1c30",
+            "tertiary": "#000000",
+            "secondary-fixed": "#d8e2ff",
+            "primary-fixed": "#dae2fd",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#bec6e0",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-background": "#0b1c30",
+            "tertiary-fixed": "#6ffbbe",
+            "primary-fixed-dim": "#bec6e0",
+            "primary": "#000000",
+            "outline-variant": "#c6c6cd",
+            "on-surface-variant": "#45464d",
+            "surface-tint": "#565e74",
+            "tertiary-container": "#002113",
+            "surface": "#f8f9ff",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "lg": "1.5rem",
+            "gutter": "1rem",
+            "md": "1rem",
+            "margin": "2rem",
+            "xs": "0.25rem",
+            "base": "4px",
+            "xl": "2rem",
+            "sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-bold": ["Inter"],
+            "h1": ["Manrope"],
+            "h2": ["Manrope"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "h3": ["Manrope"],
+            "label-caps": ["Inter"]
+          },
+          "fontSize": {
+            "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "h3": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "label-caps": ["11px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-auto-rows: minmax(120px, auto);
+    }
+    .shadow-level-1 {
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .shadow-level-2 {
+      box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden">
+<!-- NavigationDrawer Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r bg-white border-slate-200 shadow-sm flex flex-col h-full font-['Manrope'] antialiased tracking-tight text-sm z-50">
+<div class="text-xl font-extrabold tracking-tighter text-slate-900 px-6 py-8">PropManager Pro</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+        Analytics
+      </div>
+<div class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+        Properties
+      </div>
+<div class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined" data-icon="cleaning_services">cleaning_services</span>
+        Cleaners
+      </div>
+<!-- Active State Logic: Calendar is selected -->
+<div class="flex items-center gap-3 px-6 py-3 text-blue-600 bg-blue-50/50 font-bold border-r-4 border-blue-600 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+        Calendar
+      </div>
+</nav>
+<div class="p-6 border-t border-slate-100">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional property manager in corporate attire looking confident and friendly in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxp845Rm_ls4zcRtQqkNYs63puZjUnMopXbyu7MuM_CdWeZwBbGOA82MEmw7r3aIR2m_IwHki-2rdh_LmLRcENaj11u3SAc2zQHJ7fiy_G3Ck2MttP3gFyXxl2z_nUw78e0D0jjd62oU1d8yFinALrAmtaSUF1LIuUPqCoCTzUB5oZ81ZcrVNzBjIWqd9FR3nin1yLHOVKAt921yIaOk_ZCIScPY6cL13aHZpZBsV1z40BZXDoquYmhs5heBM0ftswvePkGw_UZPut"/>
+<div class="flex flex-col">
+<span class="text-on-surface font-bold text-xs uppercase tracking-wider">Admin User</span>
+<span class="text-slate-400 text-[10px]">Premium Account</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 border-b border-slate-200 bg-slate-50/80 backdrop-blur-md flex items-center justify-between px-8 py-4">
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:bg-slate-200/50 rounded-full p-2 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Manrope'] text-base font-semibold text-on-surface">Cleaning Schedule</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center bg-white border border-outline-variant rounded-xl px-3 py-1.5 shadow-sm">
+<span class="material-symbols-outlined text-slate-400 mr-2" data-icon="search">search</span>
+<input class="border-none focus:ring-0 text-sm p-0 w-48 bg-transparent" placeholder="Search tasks..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex bg-surface-container rounded-lg p-1">
+<button class="px-4 py-1.5 text-xs font-label-bold bg-white text-secondary shadow-sm rounded-md">Month</button>
+<button class="px-4 py-1.5 text-xs font-label-bold text-slate-500 hover:bg-white/50 rounded-md">Week</button>
+</div>
+<button class="active:scale-95 transition-transform duration-100 hover:bg-slate-200/50 rounded-full p-2">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-white font-bold text-xs">JD</div>
+</div>
+</div>
+</header>
+<!-- Calendar View Layout -->
+<div class="flex-1 p-8 overflow-y-auto">
+<!-- Filters and Date Selection -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-1 hover:bg-slate-100 rounded-full"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<h2 class="font-h2 text-h2 text-on-surface">October 2024</h2>
+<button class="p-1 hover:bg-slate-100 rounded-full"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+<button class="px-4 py-2 border border-outline-variant rounded-xl text-sm font-label-bold hover:bg-white transition-colors">Today</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-outline-variant rounded-xl text-xs font-medium text-on-surface-variant shadow-sm cursor-pointer hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+            All Properties
+          </div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-outline-variant rounded-xl text-xs font-medium text-on-surface-variant shadow-sm cursor-pointer hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm" data-icon="group">group</span>
+            All Cleaners
+          </div>
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-xl text-sm font-bold shadow-level-1 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+            New Cleaning
+          </button>
+</div>
+</div>
+<!-- Calendar Table -->
+<div class="bg-white rounded-xl shadow-level-1 border border-slate-200 overflow-hidden">
+<!-- Weekdays Header -->
+<div class="grid grid-cols-7 bg-slate-50 border-b border-slate-200">
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Sunday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Monday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Tuesday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Wednesday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Thursday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Friday</div>
+<div class="py-3 text-center text-xs font-label-caps text-on-surface-variant">Saturday</div>
+</div>
+<!-- Days Grid -->
+<div class="calendar-grid bg-slate-200 gap-[1px]">
+<!-- Prev Month -->
+<div class="bg-slate-50 p-3 text-slate-300">29</div>
+<div class="bg-slate-50 p-3 text-slate-300">30</div>
+<!-- Current Month -->
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">1</span>
+<!-- Task Card -->
+<div class="bg-white border-l-4 border-secondary p-2 shadow-level-1 rounded-sm cursor-pointer hover:shadow-level-2 transition-all">
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="text-[10px] font-label-bold text-on-surface truncate">Skyline Penthouse</span>
+</div>
+<div class="flex items-center gap-2">
+<img class="w-4 h-4 rounded-full border border-white" data-alt="professional cleaning staff portrait with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASr7dsW5ln5lqqrCPDSWp8_-PZO1WCslQ5sSGOlh_EQMyEttQc2vdSziEhdN5rPd5-9861tV0HuThVr0W-AVBZd3S-TQsLKkFmq9qnz2dJGJbU24_lr1R9aGJGnZetXmllFioYMVi5yJjuNxCDtmQIQK2pf2LNnvJA65FOp4pBL2sMkMj6x4Fgr6npmBrbRYrelLgON5ySzPi0RyF46abanDlo5Gd8tDiFDxeHa_BL_z_kkt-_kOaNyAW2XhkJM6Pa7YvGQSLszd9m"/>
+<span class="text-[9px] text-slate-500">10:00 AM</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">2</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">3</span>
+<div class="bg-white border-l-4 border-on-tertiary-container p-2 shadow-level-1 rounded-sm">
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-[10px] font-label-bold text-on-surface truncate">Seaside Villa</span>
+</div>
+<div class="flex items-center gap-2">
+<img class="w-4 h-4 rounded-full border border-white" data-alt="headshot of smiling team member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRWmJsQs9RizEW6_HluD-r-Jc_O9YVlgsZN9eVWu-jjOsTNyA93onrX-iEA_OKgi3CmncRZFkJRH3VU_-3Rsvy_ZHktRiyO_lQUwjkuqq-ZxJAvEy0o4unxuDbSm-1h2_oOet_SrrmUxXDVMlh-fiQHcNWdWfNJidvHe3cNSVTYI4bM2yG4iehhmBGAADquB2zEeXlyyWZxW3s9RJKMtFOxsxcyav5rwfNEWMHn0QsRoxsyJe8uANWFSoquURhbuPI1bv3xhy4qwUl"/>
+<span class="text-[9px] text-slate-500">12:30 PM</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">4</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">5</span>
+</div>
+<!-- Row 2 -->
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">6</span>
+</div>
+<div class="bg-blue-50/50 p-3 min-h-[140px] flex flex-col gap-2 relative">
+<span class="text-sm font-extrabold text-secondary flex items-center justify-center w-6 h-6 bg-secondary-fixed rounded-full">7</span>
+<div class="bg-white border-l-4 border-error p-2 shadow-level-1 rounded-sm">
+<span class="text-[10px] font-label-bold text-on-surface block truncate">Grand Loft A</span>
+<div class="h-0.5 w-full bg-slate-100 mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-error w-3/4"></div>
+</div>
+</div>
+<div class="bg-white border-l-4 border-secondary p-2 shadow-level-1 rounded-sm">
+<span class="text-[10px] font-label-bold text-on-surface block truncate">The Hive #402</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="schedule">schedule</span>
+<span class="text-[8px] text-slate-400">Exp. 4:00 PM</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">8</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">9</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">10</span>
+<div class="bg-white border-l-4 border-on-tertiary-container p-2 shadow-level-1 rounded-sm">
+<span class="text-[10px] font-label-bold text-on-surface block truncate">Mountain Cabin</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-3 h-3 rounded-full bg-slate-200"></div>
+<span class="text-[9px] text-slate-500">Unassigned</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">11</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">12</span>
+</div>
+<!-- Row 3 -->
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">13</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">14</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">15</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">16</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">17</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">18</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">19</span>
+</div>
+<!-- Row 4 -->
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">20</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">21</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">22</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">23</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">24</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">25</span>
+</div>
+<div class="bg-white p-3 min-h-[140px] flex flex-col gap-2">
+<span class="text-sm font-bold text-on-surface">26</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Inspection Panel (Quick Info) -->
+<aside class="fixed top-24 right-8 w-80 bg-white shadow-level-2 border border-slate-200 rounded-2xl p-6 transform translate-x-0 transition-transform hidden xl:block">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-h3 text-h3 text-on-surface">Upcoming Today</h3>
+<span class="text-xs font-label-bold text-secondary bg-secondary-fixed px-2 py-0.5 rounded">4 Tasks</span>
+</div>
+<div class="space-y-4">
+<!-- Task Item -->
+<div class="flex gap-4 p-3 hover:bg-slate-50 rounded-xl transition-colors cursor-pointer border border-transparent hover:border-slate-100">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="apartment">apartment</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold text-on-surface truncate">Skyline Penthouse</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-error" data-icon="priority_high">priority_high</span>
+<span class="text-xs text-slate-500">Starts 10:00 AM</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 p-3 hover:bg-slate-50 rounded-xl transition-colors cursor-pointer border border-transparent hover:border-slate-100">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="house">house</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold text-on-surface truncate">Grand Loft A</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container" data-icon="check_circle">check_circle</span>
+<span class="text-xs text-slate-500">Starts 11:30 AM</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100">
+<h4 class="text-xs font-label-caps text-on-surface-variant mb-4">Cleaner Availability</h4>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="cleaner staff portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1XW3o4oFM_140shTG2qY82ZWar5zTtMUtSO7UZq81nrA-esIgE_hHgWhH4VX_g_44weWUxY7Ab6kDWyBMtfJg9xbkRKGvYv8miXqcSn9nIRhkp0cbgMPUpfW78Vi82k7e76UWyTFCDAyxRxqkhW0BMzeF1cv3O6OUdSVsyw0wVabpVJC17hq-MTLmAlnAcMG-rCrxz1dWTcJk97EjllVFTS3Q6Y9Ok3D08NH2Oyyd-i4mRqYj-v54uNpaE3ElhRQxxShwY5IilScP" title="Maria S."/>
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="cleaner staff portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRlxoeinMdTMWld5igCcCGSvKbnQaarBmnGZfJ_e2dfh0hasIIFA-mt539aj73-8_3j7C6pCV-beZxamCG_UBjkzZjO9z2gKxRFefekk9c5U8qAga-BGMHnPcp3wjtRp4pBhLxpA9LAniI0g821XfBgrXCRtdaz5Y8nylpbnJWHqrriHtbsfLuE4qFxompKxCPzQ-SoJyp1-bCOlwDeDdmxA66aC3GRAkDD6jCg3zV9tJKCA0HG0nMpTA3VKF3YrPYBRrInvSpHrpQ" title="John D."/>
+<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="cleaner staff portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDow3cEnLqcN0oBTFITHYx6Fvloxtu9LDFUnWSE67CAXaLRYCbsNwV3Ewk9nQEolhLL5yNWiu4jVKJA86ky_nVBCekJ5_78PrNwaAC_jxAdgXY_VdYHTxL5bQ8LjRJnIO9hcqDTLo2QLEwz79QW81AQ1U9abKqmV5BX3ClPSCa9QbkuxZ9RA0RTuvQckGDqF0q8DPNhYJSHCfn9Y0S7nTNBKZdmtwlOwnf7kkXb81xtTPVqcFjuSonlolMz0QUhWPLWtbKLKsmbCud3" title="Sarah K."/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500">+5</div>
+</div>
+<p class="text-xs text-slate-500 mt-4">8 active cleaners today</p>
+</div>
+</aside>
+</main>
+<!-- Contextual FAB - Only for Home/Dashboard/Calendar top-level views -->
+<button class="fixed bottom-10 right-10 w-14 h-14 bg-secondary text-white rounded-full shadow-level-2 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

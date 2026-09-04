@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#0b1c30",
+                    "inverse-primary": "#bec6e0",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "primary": "#000000",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#2170e4",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-container-high": "#dce9ff",
+                    "primary-container": "#131b2e",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-low": "#eff4ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-container": "#fefcff",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary": "#0058be",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-container": "#009668",
+                    "tertiary": "#000000",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-background": "#0b1c30",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container": "#e5eeff",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#002113",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "outline": "#76777d",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-primary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "on-primary-container": "#7c839b",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "1.5rem",
+                    "xs": "0.25rem",
+                    "gutter": "1rem",
+                    "sm": "0.5rem",
+                    "md": "1rem",
+                    "base": "4px",
+                    "xl": "2rem",
+                    "margin": "2rem"
+            },
+            "fontFamily": {
+                    "h2": ["Manrope"],
+                    "label-caps": ["Inter"],
+                    "h3": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-bold": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "h3": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .kanban-column { width: 280px; min-width: 280px; }
+        .task-card-shadow { box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar from JSON -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm fixed top-0 z-40 w-full">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-lg active:opacity-80">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">menu</span>
+</button>
+<h1 class="text-lg font-extrabold text-slate-900 dark:text-white font-['Manrope']">OpsBoard</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<nav class="flex gap-4 font-['Manrope'] text-sm font-medium tracking-tight">
+<a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 px-1 py-5" href="#">Operations</a>
+<a class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors px-1 py-5" href="#">Calendar</a>
+<a class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors px-1 py-5" href="#">Cleaners</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-label-bold">Today, Oct 24</span>
+</div>
+<button class="bg-secondary text-on-secondary px-4 py-1.5 rounded-lg font-label-bold transition-all hover:opacity-90 active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                    Print
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-1 mt-16 flex overflow-hidden">
+<!-- NavigationDrawer (Hidden on Mobile, Visible on Desktop) -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex-col pt-4 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 z-30">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional headshot of a smiling middle-aged man in business casual attire with a soft office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWnJKchPje1qlFhYoW3uT8jADm6QCwzGMeM638mtMyVBohh2PvEeOWYpYYkP1orKOiStLvsVpzmiPBFSaCv_U5SACewy3BqLAWTC0a4C2CO1GwiEPFtihVQ1Z_afhnXadh8XXwUlJrWDIR4n6RPanGVz_4DlkZnu4QouaWkNotFBKNbz_2Z3v9Lm_7IbJdfXP8L0ej-eKDo_t2Lau1fp5vFoiD_c0BjovnXwC-KPanEMGVrZ4z_8nLOy9LEFJGfmM6D6eunN3TZgSQ"/>
+<div class="overflow-hidden">
+<p class="font-bold text-slate-900 dark:text-white truncate">Alex Reynolds</p>
+<p class="text-xs text-slate-500 truncate">Operations Manager</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 font-bold rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-weight="fill">grid_view</span>
+<span>Operations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Cleaners</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span>Properties</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Analytics</span>
+</a>
+</nav>
+</aside>
+<!-- Main Operational Board -->
+<div class="flex-1 lg:ml-64 overflow-x-auto no-scrollbar bg-surface p-6 flex gap-4 items-start h-[calc(100vh-64px)]">
+<!-- Column 1: Check-ins -->
+<section class="kanban-column flex flex-col max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">login</span>
+<h2 class="font-h3 text-on-surface">Check-ins</h2>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-bold px-2 py-0.5 rounded-full">3</span>
+</div>
+</div>
+<div class="space-y-3 overflow-y-auto no-scrollbar">
+<article class="bg-white dark:bg-slate-800 p-md rounded-xl task-card-shadow border-l-[3px] border-secondary cursor-grab active:cursor-grabbing hover:translate-y-[-2px] transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary">PREMIUM UNIT</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">more_vert</span>
+</div>
+<h3 class="font-h3 text-slate-900 dark:text-white mb-1">Ocean View Suite #402</h3>
+<div class="flex items-center gap-2 text-slate-500 mb-3">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-bold">15:00 PM</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-label-bold text-slate-600">High Priority</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-800 p-md rounded-xl task-card-shadow border-l-[3px] border-secondary cursor-grab active:cursor-grabbing">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary">STANDARD</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">more_vert</span>
+</div>
+<h3 class="font-h3 text-slate-900 dark:text-white mb-1">Garden Loft #12</h3>
+<div class="flex items-center gap-2 text-slate-500 mb-3">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-bold">16:30 PM</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-slate-300"></span>
+<span class="text-label-bold text-slate-600">Low Priority</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Column 2: Cleanings -->
+<section class="kanban-column flex flex-col max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]">cleaning_services</span>
+<h2 class="font-h3 text-on-surface">Cleanings</h2>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-bold px-2 py-0.5 rounded-full">2</span>
+</div>
+</div>
+<div class="space-y-3 overflow-y-auto no-scrollbar">
+<article class="bg-white dark:bg-slate-800 p-md rounded-xl task-card-shadow border-l-[3px] border-tertiary-fixed-dim cursor-grab active:cursor-grabbing">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-on-tertiary-container">TURNOVER</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">more_vert</span>
+</div>
+<h3 class="font-h3 text-slate-900 dark:text-white mb-1">Downtown Studio #09</h3>
+<div class="flex items-center gap-2 text-slate-500 mb-3">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+<span class="text-label-bold">Due 14:00 PM</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full w-[0%]"></div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-label-bold text-slate-400">Unassigned</span>
+<button class="text-secondary font-label-bold hover:underline">Assign</button>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-800 p-md rounded-xl task-card-shadow border-l-[3px] border-tertiary-fixed-dim cursor-grab active:cursor-grabbing">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-on-tertiary-container">DEEP CLEAN</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">more_vert</span>
+</div>
+<h3 class="font-h3 text-slate-900 dark:text-white mb-1">Mountain Cabin #22</h3>
+<div class="flex items-center gap-2 text-slate-500 mb-3">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+<span class="text-label-bold">Due 17:00 PM</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-label-bold text-slate-600">Medium</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Column 3: Maria -->
+<section class="kanban-column flex flex-col max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover ring-2 ring-white shadow-sm" data-alt="portrait of a focused hispanic woman with hair tied back in a professional workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWZPX3g0bQcgj8Y9hv3NVIEq3u7U8J6NsbWVSUdU-zu2G0AWWOBxFDHqkXkpXtpugWi5rGlAO3hZuTmrzrHZmzKDisGozwgO_7sMkK4dBAT9IF6gec4HoxhBiQDJKxcgoT2aA4uw1rYE0TJTwO_NGfeAXpbjtWZ2BBVHeor5pfpUiL1JlV7-_nmM7RXLYBCOqggMTH9GG_XZMTIcn3sIhuGexhh9jZUpIzXbd0zM5V1RSQBb8AU6PwjfcT9DM7zkN4iHYqDUpVybQL"/>
+<h2 class="font-h3 text-on-surface">Maria</h2>
+</div>
+<span class="bg-tertiary-container text-tertiary-fixed text-label-bold px-2 py-0.5 rounded-full">1</span>
+</div>
+<div class="space-y-3 overflow-y-auto no-scrollbar">
+<article class="bg-white dark:bg-slate-800 p-md rounded-xl task-card-shadow border-l-[3px] border-tertiary-fixed-dim cursor-grab active:cursor-grabbing">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-on-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">check_circle</span>
+                                IN PROGRESS
+                            </div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">more_vert</span>
+</div>
+<h3 class="font-h3 text-slate-900 dark:text-white mb-1">Penthouse #5001</h3>
+<div class="flex items-center gap-2 text-slate-500 mb-3">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-bold">11:00 - 14:00</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-on-tertiary-container h-full w-[65%]"></div>
+</div>
+</article>
+<button class="w-full border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl py-4 flex flex-col items-center justify-center text-slate-400 hover:border-secondary hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-label-bold">Assign Task</span>
+</button>
+</div>
+</section>
+<!-- Column 4: John -->
+<section class="kanban-column flex flex-col max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover ring-2 ring-white shadow-sm" data-alt="portrait of a young man with a friendly expression in outdoor natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYsavfJm9_gIx9A3enkShY_KfSuVYF02gXcE30_a1huELXSDiZimp3EzErwy0mq_5wsGMKdMBzPWoR8o6UXJCYjt85mY1xU1ty0Ts6LJgmpJNtIxyBcZNZSIx4T9e8g7sMgcR-q7U8n1yUZ5qDurFIC8bIgqqmwISAv-O9apBWU1fL1pVfMKcwBrGZaJPIjssqXqFgrQk7A3UBC1DnlHH8Nge8oVYm7yhVAL1zNTqEdM8REPM1Jp38rabgMZ8AhWz9-qJAmDyax26Q"/>
+<h2 class="font-h3 text-on-surface">John</h2>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-bold px-2 py-0.5 rounded-full">0</span>
+</div>
+<div class="space-y-3 overflow-y-auto no-scrollbar">
+<div class="flex flex-col items-center justify-center py-12 px-6 border-2 border-dashed border-slate-100 rounded-2xl bg-white/30">
+<span class="material-symbols-outlined text-slate-300 text-[48px] mb-2">task_alt</span>
+<p class="text-slate-400 text-center font-label-bold">No tasks assigned today</p>
+</div>
+<button class="w-full border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl py-4 flex flex-col items-center justify-center text-slate-400 hover:border-secondary hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-label-bold">Assign Task</span>
+</button>
+</div>
+</section>
+<!-- Add Column Button -->
+<section class="kanban-column">
+<button class="w-full bg-slate-100/50 hover:bg-slate-200/50 dark:bg-slate-800/30 dark:hover:bg-slate-800/50 rounded-2xl p-4 flex items-center gap-3 text-slate-500 font-h3 transition-all">
+<span class="material-symbols-outlined">add</span>
+                    Add Staff Column
+                </button>
+</section>
+</div>
+</main>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 fixed bottom-0 w-full h-16 flex items-center justify-around px-4 z-40">
+<button class="flex flex-col items-center gap-1 text-blue-600">
+<span class="material-symbols-outlined" data-weight="fill">grid_view</span>
+<span class="text-[10px] font-bold">Ops</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-bold">Plan</span>
+</button>
+<div class="relative -top-6">
+<button class="bg-secondary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] font-bold">Staff</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>

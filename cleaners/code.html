@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#002113",
+                    "surface-bright": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "secondary": "#0058be",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#131b2e",
+                    "background": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-container": "#009668",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "outline": "#76777d",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-container": "#2170e4",
+                    "on-surface": "#0b1c30",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-background": "#0b1c30",
+                    "tertiary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "primary": "#000000",
+                    "outline-variant": "#c6c6cd",
+                    "on-surface-variant": "#45464d",
+                    "surface-tint": "#565e74",
+                    "tertiary-container": "#002113",
+                    "surface": "#f8f9ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "1.5rem",
+                    "gutter": "1rem",
+                    "md": "1rem",
+                    "margin": "2rem",
+                    "xs": "0.25rem",
+                    "base": "4px",
+                    "xl": "2rem",
+                    "sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "h1": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h3": ["Manrope"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "h3": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- NavigationDrawer -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 bg-white shadow-sm flex flex-col h-full font-['Manrope'] antialiased tracking-tight text-sm z-50">
+<div class="text-xl font-extrabold tracking-tighter text-slate-900 px-6 py-8">
+            PropManager Pro
+        </div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+                Properties
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-blue-600 bg-blue-50/50 font-bold border-r-4 border-blue-600 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="cleaning_services">cleaning_services</span>
+                Cleaners
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 font-medium hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Calendar
+            </a>
+</nav>
+<div class="p-6 border-t border-slate-200">
+<div class="flex items-center gap-3">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full" data-alt="Professional portrait of a male operations manager in a clean office environment, soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-qGaA-ybs2Xw7JXPg96zFMrEKVFJcERR-ZsRCdn9X4l09IOWfO9pg0UwRdaNcV92j-eIFoXXXMNxShMInUR4zsqK9vdFna9PcvEaX8QszvG7qTk7Fg1oYBbNfRv7fL9B-PhTFsDU8kRkKrG8E5nHnNwquLZVAnZJqg6DYisLyns3uUsbs_hGC1jzU-6ESBP0xbPbuL9MGPiO6fCcO5S5nsWC0ABjnjXGETYxekm8w7_PVG6xrM64l0F-aEjTt0OALo_IPnuhgmEU0"/>
+<div>
+<p class="font-bold text-slate-900 text-sm">Alex Rivera</p>
+<p class="text-xs text-slate-500">Ops Director</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 border-b border-slate-200 bg-slate-50/80 backdrop-blur-md flex items-center justify-between px-8 py-4">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-200/50 rounded-full p-2 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Manrope'] text-base font-semibold text-slate-900">Cleaners management</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl font-label-bold flex items-center gap-2 shadow-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    Add New Cleaner
+                </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+<img alt="Avatar" data-alt="Close up portrait of a smiling woman in professional casual attire against a neutral gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTWaCh-BQp85vwdBz5ZIun-CO41cGUJg7bKH44VzNWcM5QaithqiVBQu9g6ag9tR3uY2EJ4QXigNWsbDV0vEc2R9ahzPCf1h3PnSq7vkScfwGKJRulnnvN9RJWLfUeMauACgZzAjB4GfhqAQ85IsHwNgVpPyMSEKiki3-ZpRCeDyEiIJM5jh0RWPizumYkb8m6s6f3q9bKsKoemn5mM80VPh7_CV-jvM6-E06dbebyTG2L9OsbkgfuXcuW4UFDOrtytrRv83J2F2Xq"/>
+</div>
+</div>
+</header>
+<section class="p-margin">
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-white p-lg rounded-xl border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<p class="text-on-primary-container font-label-caps uppercase mb-xs">Total Staff</p>
+<h3 class="font-h1 text-on-surface">24</h3>
+<div class="mt-sm flex items-center text-on-tertiary-container gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-label-bold">+2 this month</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<p class="text-on-primary-container font-label-caps uppercase mb-xs">Active Now</p>
+<h3 class="font-h1 text-on-surface">18</h3>
+<div class="mt-sm flex items-center text-on-tertiary-container gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-xs font-label-bold">75% utilization</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<p class="text-on-primary-container font-label-caps uppercase mb-xs">In Training</p>
+<h3 class="font-h1 text-on-surface">3</h3>
+<div class="mt-sm flex items-center text-on-secondary-fixed-variant gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span>
+<span class="text-xs font-label-bold">Completion: 12d</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<p class="text-on-primary-container font-label-caps uppercase mb-xs">Avg Rating</p>
+<h3 class="font-h1 text-on-surface">4.9</h3>
+<div class="mt-sm flex items-center text-on-tertiary-container gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-label-bold">Top 5% region</span>
+</div>
+</div>
+</div>
+<!-- Management Interface -->
+<div class="flex flex-col gap-xl">
+<div class="flex items-center justify-between">
+<h2 class="font-h2 text-on-surface">Cleaning Crew Directory</h2>
+<div class="flex gap-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-secondary-container focus:outline-none transition-all" placeholder="Search cleaners..." type="text"/>
+</div>
+<button class="p-2 border border-slate-300 rounded-lg bg-white hover:bg-slate-50">
+<span class="material-symbols-outlined text-slate-600" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Cleaners Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Cleaner Card: Active -->
+<div class="bg-white rounded-xl border-l-[3px] border-l-on-tertiary-container shadow-[0_1px_3px_rgba(15,23,42,0.08)] hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.1)] transition-all p-md relative group">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<img alt="Elena Rodriguez" class="w-12 h-12 rounded-full object-cover" data-alt="Headshot of a middle-aged woman with a kind expression and professional appearance, bright natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgvAXcJZioW4kzt9-cJs08WEW5cOvK4B3r6fHMiQt5qUEW3-hllzXqDqy0-6P0vqhyx3JEYevfQWOQh4EL-tCEKP7vOHtV4h2MKe5rCM-ooMrrtM1M56OMMXr7DM0O7m9XwDFpY9og6ER85bydCdpq9sVPdfYbx4eFHJHqD46HfiMTBbmBepvVVonnfcb_3CM2AuswnQxT_P0eI_PTfSKPSI8q4Vt6zURdHtMFYzXrLs5t6CTZA647t01dPmv2sJs8aYc59VkETHec"/>
+<div>
+<h4 class="font-h3 text-on-surface">Elena Rodriguez</h4>
+<p class="text-xs text-slate-500 font-medium">Senior Lead Cleaner</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="space-y-2 mb-md">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+<span class="text-xs">elena.r@propmanager.pro</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="phone">phone</span>
+<span class="text-xs">+1 (555) 098-1234</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-md border-t border-slate-100">
+<div class="flex -space-x-2">
+<span class="w-6 h-6 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold" title="Property Access: 5">5</span>
+</div>
+<button class="text-secondary text-xs font-bold hover:underline">View Schedule</button>
+</div>
+<div class="absolute bottom-0 left-0 h-[2px] bg-on-tertiary-container w-[100%] transition-all"></div>
+</div>
+<!-- Cleaner Card: Busy -->
+<div class="bg-white rounded-xl border-l-[3px] border-l-secondary-container shadow-[0_1px_3px_rgba(15,23,42,0.08)] hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.1)] transition-all p-md relative">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<img alt="Jordan Smith" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young man with a friendly smile, clean cut, wearing a professional uniform, outdoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt4urP9Wg_YGkfQJYaQ4YzmoD3mRAmOzYo7-xvZvANYW90LIieRLWcBraZbxS1v4t5FF0bn8DRTYiK1BDYK7z3DqgnVyN-WMYOOyan5jQq4OV5Y51hV4CGiAc2xPANvFVWNh00Ez22i3lFEfhYy_EQVPD55SrPKTAEmVXE0wzTSWxCgNTsseL6M9eT31RdX0baq1Z_EfkLnnzHx4tWy_2PEGs5sAeN-HJ44AlLDnwEcNsInLKARy7JKtUoH_cwNysNqLGEfx6VjXRz"/>
+<div>
+<h4 class="font-h3 text-on-surface">Jordan Smith</h4>
+<p class="text-xs text-slate-500 font-medium">Field Specialist</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[10px] font-bold uppercase tracking-wider">Busy</span>
+</div>
+<div class="space-y-2 mb-md">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+<span class="text-xs">j.smith@propmanager.pro</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="phone">phone</span>
+<span class="text-xs">+1 (555) 443-2211</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-md border-t border-slate-100">
+<p class="text-[10px] text-slate-400 font-medium">Current: Sunset Loft A4</p>
+<button class="text-secondary text-xs font-bold hover:underline">Track Progress</button>
+</div>
+<div class="absolute bottom-0 left-0 h-[2px] bg-secondary-container w-[65%]"></div>
+</div>
+<!-- Cleaner Card: Active -->
+<div class="bg-white rounded-xl border-l-[3px] border-l-on-tertiary-container shadow-[0_1px_3px_rgba(15,23,42,0.08)] hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.1)] transition-all p-md relative">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover" data-alt="Modern professional headshot of an Asian woman in business casual attire with a soft office backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI-QQ6HdYAP1aeNj1f-VVrFcmlOP4nzUetEseOB_1f7JJfWbyFTyEaqSejUpt2EvlAKxg_NeRJeN1F7PpJ07OVURKnId7LKujX7ZYORQXuQ2k71UY_2zIXJMpo4xGmO5AqY1Ic6bZhzsF23vnjI9-EXBKPnMH6fkq_LNC5Y_GgQgTU1Q5SEIN93JxqNfbx71Ri-HPoLE_KWlO5yQY5grLoNsw4TmDRNPBpJ0LUf0psLLwiZahHhnAssFYic6nkXVSUKlOAAVYLwIlD"/>
+<div>
+<h4 class="font-h3 text-on-surface">Sarah Chen</h4>
+<p class="text-xs text-slate-500 font-medium">Maintenance Support</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="space-y-2 mb-md">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+<span class="text-xs">s.chen@propmanager.pro</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="phone">phone</span>
+<span class="text-xs">+1 (555) 778-9900</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-md border-t border-slate-100">
+<div class="flex gap-1 items-center">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<p class="text-[10px] text-error font-bold">1 Alert: Keycard Issue</p>
+</div>
+<button class="text-secondary text-xs font-bold hover:underline">View History</button>
+</div>
+<div class="absolute bottom-0 left-0 h-[2px] bg-on-tertiary-container w-[100%]"></div>
+</div>
+<!-- Cleaner Card: Active -->
+<div class="bg-white rounded-xl border-l-[3px] border-l-on-tertiary-container shadow-[0_1px_3px_rgba(15,23,42,0.08)] hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.1)] transition-all p-md relative">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<img alt="Marcus Vane" class="w-12 h-12 rounded-full object-cover" data-alt="Candid portrait of a young man with glasses, looking professional and attentive, studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgT4GGQoJoZ0kWVmdL4_UgQsGoJHvjGRTd8I18fXSPhofdg4adMVOSCi_VsYEbhptRFTlW5CgZz567nJ13TFQskPsSbUM3Tmv7gRIvVZovJLvkjyoWmVp0p7SEhyEES4vHcuDR89hc3OSbeae7GLdvNi9f90e7Gl5mghO2vfjcXAxfEE6RU-cbuhjRUL91zF0sdc0hpdgiW4qacFaOtRlHDWRkbWy6deRtN4JkhZtO_PQl7z2OwOKvPU3xrLHeptVWZ5KINlMyTk93"/>
+<div>
+<h4 class="font-h3 text-on-surface">Marcus Vane</h4>
+<p class="text-xs text-slate-500 font-medium">Cleaning Crew</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="space-y-2 mb-md">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+<span class="text-xs">m.vane@propmanager.pro</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="phone">phone</span>
+<span class="text-xs">+1 (555) 221-5544</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-md border-t border-slate-100">
+<div class="flex -space-x-2">
+<span class="w-6 h-6 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold" title="Property Access: 12">12</span>
+</div>
+<button class="text-secondary text-xs font-bold hover:underline">Manage Access</button>
+</div>
+<div class="absolute bottom-0 left-0 h-[2px] bg-on-tertiary-container w-[100%]"></div>
+</div>
+<!-- Cleaner Card: Busy -->
+<div class="bg-white rounded-xl border-l-[3px] border-l-secondary-container shadow-[0_1px_3px_rgba(15,23,42,0.08)] hover:shadow-[0_10px_15px_-3px_rgba(15,23,42,0.1)] transition-all p-md relative">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<img alt="Liam Foster" class="w-12 h-12 rounded-full object-cover" data-alt="Headshot of a smiling man with a beard, professional attire, clear blue sky background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvl31K9tssnTVYRgJw4DP7HqyvbOVFronSFWwf6PWTCLlA1LLDVYXL6eJc17V_DZ4NmhKUY-0Sa_kuZeHpyONTvtYXqB-u5KsvZL2YwPSua5hbOVZwNUIK2wf_bYZNvhztlh6D7Q9AtQPZUTpt3_7wd5GiYmJc06DQ_GSEOPpQKzDw4sVST8ZAXCKQS1q3g-gpjWXRSepqmgc_sFJCSCwM50usZZO7M3NG2Y4V9cbbDRYTvdqX0oy7aAW0XkTBio0F_rBDQRfmw-xz"/>
+<div>
+<h4 class="font-h3 text-on-surface">Liam Foster</h4>
+<p class="text-xs text-slate-500 font-medium">Night Crew Lead</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[10px] font-bold uppercase tracking-wider">Busy</span>
+</div>
+<div class="space-y-2 mb-md">
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+<span class="text-xs">l.foster@propmanager.pro</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="phone">phone</span>
+<span class="text-xs">+1 (555) 332-9988</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-md border-t border-slate-100">
+<p class="text-[10px] text-slate-400 font-medium">Current: Downtown Plaza 8B</p>
+<button class="text-secondary text-xs font-bold hover:underline">Track Location</button>
+</div>
+<div class="absolute bottom-0 left-0 h-[2px] bg-secondary-container w-[25%]"></div>
+</div>
+<!-- Add New Placeholder -->
+<button class="bg-slate-100/50 border-2 border-dashed border-slate-300 rounded-xl p-md flex flex-col items-center justify-center gap-2 hover:bg-slate-100 hover:border-slate-400 transition-all group">
+<div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-slate-500" data-icon="person_add">person_add</span>
+</div>
+<p class="font-label-bold text-slate-500">Register New Staff</p>
+</button>
+</div>
+</div>
+<!-- Training & Onboarding Section (asymmetric layout) -->
+<div class="mt-xl grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<div class="lg:col-span-2 bg-white rounded-xl p-lg border border-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-h2 text-on-surface">Recent Performance Scores</h3>
+<button class="text-xs text-secondary-container font-label-bold">Download Report</button>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-on-tertiary-container/10 flex items-center justify-center text-on-tertiary-container font-bold text-xs">ER</div>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 98%"></div>
+</div>
+<span class="text-xs font-bold text-slate-700">9.8</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-secondary-container/10 flex items-center justify-center text-secondary-container font-bold text-xs">JS</div>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 82%"></div>
+</div>
+<span class="text-xs font-bold text-slate-700">8.2</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-on-tertiary-container/10 flex items-center justify-center text-on-tertiary-container font-bold text-xs">SC</div>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 94%"></div>
+</div>
+<span class="text-xs font-bold text-slate-700">9.4</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-on-tertiary-container/10 flex items-center justify-center text-on-tertiary-container font-bold text-xs">MV</div>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 89%"></div>
+</div>
+<span class="text-xs font-bold text-slate-700">8.9</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-lg border border-surface-variant flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary-container mb-sm" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="font-h3 text-on-surface mb-xs">Optimization Tip</h4>
+<p class="text-body-md text-on-surface-variant">Three cleaners are reaching their weekly hour limits. Consider re-assigning pending tasks to the Night Crew to avoid overtime costs.</p>
+</div>
+<button class="mt-md w-full py-2 bg-white text-secondary-container border border-secondary-container rounded-lg font-label-bold hover:bg-secondary-container hover:text-white transition-all">
+                        Run Optimization
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>
